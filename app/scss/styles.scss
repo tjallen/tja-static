@@ -1,0 +1,269 @@
+@import "bourbon";
+@import "neat";
+@import "colors";
+@import "font-awesome";
+
+@mixin bp-lg {
+  @media only screen and (min-width: 60em) {
+    @content;
+  }
+}
+
+@mixin bp-md {
+  @media only screen and (min-width: 40em) {
+    @content;
+  }
+}
+
+@mixin bp-sm {
+  @media only screen and (min-width: 30em) {
+    @content;
+  }
+}
+
+@mixin listreset {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0;
+	-webkit-padding-start: 0;
+	margin-left: 0; // ie
+	padding-left: 0; // ff
+}
+
+@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
+  -webkit-box-shadow: $horiz $vert $blur $spread $color;
+  -moz-box-shadow: $horiz $vert $blur $spread $color;
+  box-shadow: $horiz $vert $blur $spread $color;
+}
+
+@mixin text-shadow($x: 1px, $y: 1px, $r: 1px, $c: rgba(45,45,45,.35)){
+	text-shadow: $x $y $r $c;
+}
+
+@function headings($from:1, $to:6) {
+	@if $from == $to {
+		@return 'h#{$from}';
+	} @else {
+		@return 'h#{$from},' + headings($from+1, $to);
+	}
+}
+
+$link: $blue-a200;
+$copy: #757575;
+
+body {
+	background-color: #eee;
+	color: $grey-600;
+	font-family: 'Montserrat', 'Open Sans', 'Droid Sans', 'Arial Black',  Verdana,  sans-serif;
+}
+
+#main {
+	padding: 0 10px;
+	@include outer-container;
+}
+
+div {
+	line-height: 1.8em;
+	text-align: left;
+}
+
+div.section-content {
+	margin-top: 40px;
+	@include span-columns(12);
+	@include clearfix;
+	h2:nth-of-type(1) {
+		margin-top: 0;
+	}
+}
+
+hr {
+	width: 100%;
+	border: none;
+	background-color: $grey-300;
+	height: 1px;
+	margin: {
+		left: auto;
+		right: auto;
+		top: 40px;
+		bottom: 40px;
+	}
+}
+
+#{headings(1,6)} {
+	color: $grey-800;
+}
+
+h2 {
+	@include bp-md {
+		font-size: rem(28);
+	}
+	@include bp-lg {
+		font-size: rem(32);
+	}
+}
+
+a {
+	color: $link;
+	text-decoration: none;
+	@include transition(all .1s ease-in-out);
+	&:hover {
+		color: lighten($link, 10%);
+	}
+}
+
+ul, ol, dl {
+	@include listreset;
+	list-style-type: square;
+	margin: 0 0 10px 0;
+	dd {
+		@include listreset;
+	}
+}
+
+p {
+	color: $copy;
+}
+
+b, strong {
+	color: $grey-800;
+}
+
+header {
+	background: url('../images/3.jpg') center center;
+	background-size: cover;
+	height: 250px;
+	width: 100%;
+	h1,h2 {
+		margin: 0;
+		padding: 10px 0;
+		@include text-shadow;
+		text-align: center;
+		color: #fff;
+	}
+	h1 {
+    letter-spacing: 1px;
+    position: absolute;
+    padding: 40px 20px;
+    text-transform: uppercase;
+    font: {
+			weight: 700;
+			size: rem(18);
+			weight: 700;
+    }
+	}
+	h2 {
+		font-size: rem(20);
+		padding: 0 10px;
+		margin-top: 15px;
+		line-height: 1.5rem;
+		@include bp-md {
+			font-size: rem(30);
+		}
+		@include bp-lg {
+			font-size: rem(38);
+		}
+	}
+}
+
+.valign {
+	display: table;
+	.valign-inner {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+section#work {
+	div.work-item {
+		@include clearfix;
+		position: relative;
+		padding: 6px 0px;
+		border-top: 1px solid $grey-300;
+		width: 100%;
+		display: block;
+		& > * {
+			display: inline-block;
+			margin: 10px 5px 0 5px;
+		}
+		div.work-info {
+			width: 75%;
+		}
+		div.work-icon {
+			float: left;
+		}
+		div.work-icon, div.work-repo {
+			text-align: center;
+			img {
+				height: 32px;
+				width: 32px;
+				border-radius: 36px;
+				margin-top: 2px;
+			}
+		}
+		div.work-repo {
+			position: absolute;
+			right: 5px;
+			top: 0;
+			@include bp-lg {
+				top: 5px;
+			}
+			i.fa {
+				font-size: 20px;
+				@include bp-lg {
+					font-size: 30px;
+				}
+			}
+		}
+		dl {
+			line-height: 1.3rem;
+		}
+		dd.tools {
+			font-size: rem(12);
+			list-style-type: none;
+			color: $grey-600;
+		}
+	}
+}
+
+section#skills {
+	dd {
+		line-height: rem(22);
+	}
+	dt {
+		color: $grey-500;
+		font-size: rem(11);
+		text-transform: uppercase;
+		margin: 15px 0 -10px;
+	}
+}
+
+section#contact {
+	div.cta {
+		text-align: center;
+		button {
+			@include transition(all .1s ease-in-out);
+			background-color: $link;
+			color: #fff;
+			border: none;
+			padding: 5px 15px;
+			text-transform: uppercase;
+			font-weight: normal;
+			@include box-shadow(0, 1px, 1px, 1px, $grey-600);
+			&:hover {
+				@include box-shadow(0, 1px, 2px, 1px, $grey-800);
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+footer {
+	margin-top: 60px;
+	text-align: center;
+	padding: 20px;
+	background-color: $grey-300;
+	p {
+		font-size: rem(13);
+	}
+}
