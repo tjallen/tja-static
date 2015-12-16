@@ -50,8 +50,11 @@
 	}
 }
 
-$link: $md-blue-a200;
+// color variables
+$link: $md-red-a200;
+$link-fb: lighten($link,10%);
 $copy: #757575;
+$bg: $md-blue-grey-500;
 
 body {
 	background-color: #fff;
@@ -62,6 +65,9 @@ body {
 #main {
 	padding: 0 10px;
 	@include outer-container;
+	@include bp-md {
+		padding: 0 25px;
+	}
 }
 
 div {
@@ -144,7 +150,8 @@ header {
 }
 
 .hero {
-	@include linear-gradient(to top, $md-blue-grey-500, $md-blue-grey-700, $fallback: red);
+	@include linear-gradient(to top left, $md-indigo-300, $md-red-300, $fallback: $bg);
+	//background-color: $bg;
 	height: 250px;
 	width: 100%;
 	h1,h2 {
@@ -173,10 +180,6 @@ header {
 		@include bp-md {
 			font-size: rem(30);
 			line-height: 2rem;
-		}
-		@include bp-lg {
-			font-size: rem(38);
-			line-height: 2.5rem;
 		}
 	}
 }
@@ -277,8 +280,12 @@ footer {
 	margin-top: 60px;
 	text-align: center;
 	padding: 20px;
-	background-color: $md-grey-300;
+	background-color: $bg;
 	p {
+		color: #fff;
 		font-size: rem(13);
+	}
+	a {
+		color: $link-fb;
 	}
 }
