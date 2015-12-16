@@ -1,7 +1,8 @@
 @import "bourbon";
 @import "neat";
-@import "colors";
-@import "font-awesome";
+// @import "_colors";
+// @import "_font-awesome";
+@import "../../node_modules/material-colors/dist/colors.scss";
 
 @mixin bp-lg {
   @media only screen and (min-width: 60em) {
@@ -49,12 +50,12 @@
 	}
 }
 
-$link: $blue-a200;
+$link: $md-blue-a200;
 $copy: #757575;
 
 body {
-	background-color: #eee;
-	color: $grey-600;
+	background-color: #fff;
+	color: $md-grey-600;
 	font-family: 'Montserrat', 'Open Sans', 'Droid Sans', 'Arial Black',  Verdana,  sans-serif;
 }
 
@@ -80,7 +81,7 @@ div.section-content {
 hr {
 	width: 100%;
 	border: none;
-	background-color: $grey-300;
+	background-color: $md-grey-300;
 	height: 1px;
 	margin: {
 		left: auto;
@@ -91,7 +92,7 @@ hr {
 }
 
 #{headings(1,6)} {
-	color: $grey-800;
+	color: $md-grey-800;
 }
 
 h2 {
@@ -126,12 +127,24 @@ p {
 }
 
 b, strong {
-	color: $grey-800;
+	color: $md-grey-800;
 }
 
 header {
-	background: url('../images/3.jpg') center center;
-	background-size: cover;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	h1 {
+		font-size: 10px;
+		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+}
+
+.hero {
+	@include linear-gradient(to top, $md-blue-grey-500, $md-blue-grey-700, $fallback: red);
 	height: 250px;
 	width: 100%;
 	h1,h2 {
@@ -159,9 +172,11 @@ header {
 		line-height: 1.5rem;
 		@include bp-md {
 			font-size: rem(30);
+			line-height: 2rem;
 		}
 		@include bp-lg {
 			font-size: rem(38);
+			line-height: 2.5rem;
 		}
 	}
 }
@@ -179,7 +194,7 @@ section#work {
 		@include clearfix;
 		position: relative;
 		padding: 6px 0px;
-		border-top: 1px solid $grey-300;
+		border-top: 1px solid $md-grey-300;
 		width: 100%;
 		display: block;
 		& > * {
@@ -221,7 +236,7 @@ section#work {
 		dd.tools {
 			font-size: rem(12);
 			list-style-type: none;
-			color: $grey-600;
+			color: $md-grey-600;
 		}
 	}
 }
@@ -231,7 +246,7 @@ section#skills {
 		line-height: rem(22);
 	}
 	dt {
-		color: $grey-500;
+		color: $md-grey-500;
 		font-size: rem(11);
 		text-transform: uppercase;
 		margin: 15px 0 -10px;
@@ -249,9 +264,9 @@ section#contact {
 			padding: 5px 15px;
 			text-transform: uppercase;
 			font-weight: normal;
-			@include box-shadow(0, 1px, 1px, 1px, $grey-600);
+			@include box-shadow(0, 1px, 1px, 1px, $md-grey-600);
 			&:hover {
-				@include box-shadow(0, 1px, 2px, 1px, $grey-800);
+				@include box-shadow(0, 1px, 2px, 1px, $md-grey-800);
 				cursor: pointer;
 			}
 		}
@@ -262,7 +277,7 @@ footer {
 	margin-top: 60px;
 	text-align: center;
 	padding: 20px;
-	background-color: $grey-300;
+	background-color: $md-grey-300;
 	p {
 		font-size: rem(13);
 	}
