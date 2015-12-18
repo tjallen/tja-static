@@ -45,7 +45,7 @@ gulp.task('styles', function() {
 		])
 			.pipe($.plumber({errorHandler: onErr}))
 	    .pipe($.newer('.tmp/styles'))
-	    //.pipe($.sourcemaps.init())
+	    .pipe($.sourcemaps.init())
 			// sass: normalize, neat, user styles
 	    .pipe($.sass({
 	      includePaths: require('node-normalize-scss').with(['styles'].concat(neat))
@@ -54,7 +54,7 @@ gulp.task('styles', function() {
 	    .pipe(gulp.dest('.tmp/styles'))
 	    .pipe($.if('*.css', $.minifyCss()))
 	    .pipe($.size({title: 'styles'}))
-	    //.pipe($.sourcemaps.write('./'))
+	    .pipe($.sourcemaps.write('./'))
 	    .pipe(gulp.dest('dist/styles'))
 			.pipe(browserSync.stream({match: '**/*.css'}));
 });

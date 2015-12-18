@@ -1,8 +1,14 @@
+@charset "utf-8";
+
+@import "normalize";
 @import "bourbon";
 @import "neat";
-// @import "_colors";
-// @import "_font-awesome";
 @import "../../node_modules/material-colors/dist/colors.scss";
+
+// required if using svg icon spritesheets
+.hide {
+	display: none;
+}
 
 @mixin bp-lg {
   @media only screen and (min-width: 60em) {
@@ -59,20 +65,16 @@ $bg: $md-blue-grey-500;
 body {
 	background-color: #fff;
 	color: $md-grey-600;
+	line-height: 1.8em;
 	font-family: 'Montserrat', 'Open Sans', 'Droid Sans', 'Arial Black',  Verdana,  sans-serif;
 }
 
-#main {
+div#main {
 	padding: 0 10px;
 	@include outer-container;
 	@include bp-md {
 		padding: 0 25px;
 	}
-}
-
-div {
-	line-height: 1.8em;
-	text-align: left;
 }
 
 div.section-content {
@@ -81,6 +83,14 @@ div.section-content {
 	@include clearfix;
 	h2:nth-of-type(1) {
 		margin-top: 0;
+	}
+}
+
+.icon-github {
+	height: 20px;
+	width: 20px;
+	&:hover {
+		fill: $link;
 	}
 }
 
@@ -230,10 +240,10 @@ section#work {
 			@include bp-lg {
 				top: 5px;
 			}
-			i.fa {
-				font-size: 20px;
+			.icon-github {
 				@include bp-lg {
-					font-size: 30px;
+					height: 30px;
+					width: 30px;
 				}
 			}
 		}
@@ -291,5 +301,9 @@ footer {
 	}
 	a {
 		color: $link-fb;
+	}
+	.icon-github {
+		display: block;
+		margin: 0 auto;
 	}
 }
