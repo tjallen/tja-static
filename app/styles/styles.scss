@@ -1,53 +1,19 @@
-@charset "utf-8";
+@charset 'utf-8';
 
-@import "normalize";
-@import "bourbon";
-@import "neat";
-@import "../../node_modules/material-colors/dist/colors.scss";
+@import 'normalize';
+@import 'bourbon';
+@import 'neat';
+@import '../../node_modules/material-colors/dist/colors.scss';
+@import 'utils/mixins';
 
-// required if using svg icon spritesheets
-.hide {
-	display: none;
-}
+// import later - _cfg
+$breakpoints: (
+	sml: 30em,
+	med: 40em,
+	lrg: 60em
+);
 
-@mixin bp-lg {
-  @media only screen and (min-width: 60em) {
-    @content;
-  }
-}
-
-@mixin bp-md {
-  @media only screen and (min-width: 40em) {
-    @content;
-  }
-}
-
-@mixin bp-sm {
-  @media only screen and (min-width: 30em) {
-    @content;
-  }
-}
-
-@mixin listreset {
-	-webkit-margin-before: 0;
-	-webkit-margin-after: 0;
-	-webkit-margin-start: 0;
-	-webkit-margin-end: 0;
-	-webkit-padding-start: 0;
-	margin-left: 0; // ie
-	padding-left: 0; // ff
-}
-
-@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
-  -webkit-box-shadow: $horiz $vert $blur $spread $color;
-  -moz-box-shadow: $horiz $vert $blur $spread $color;
-  box-shadow: $horiz $vert $blur $spread $color;
-}
-
-@mixin text-shadow($x: 1px, $y: 1px, $r: 1px, $c: rgba(45,45,45,.35)){
-	text-shadow: $x $y $r $c;
-}
-
+// import later? - _functions
 @function headings($from:1, $to:6) {
 	@if $from == $to {
 		@return 'h#{$from}';
@@ -56,7 +22,7 @@
 	}
 }
 
-// color variables
+// color _variables
 $link: $md-red-a200;
 $link-fb: lighten($link,10%);
 $copy: #757575;
@@ -72,7 +38,7 @@ body {
 div#main {
 	padding: 0 10px;
 	@include outer-container;
-	@include bp-md {
+	@include query('med') {
 		padding: 0 25px;
 	}
 }
@@ -94,6 +60,11 @@ div.section-content {
 	}
 }
 
+// required if using svg icon spritesheets
+.hide {
+	display: none;
+}
+
 hr {
 	width: 100%;
 	border: none;
@@ -112,10 +83,10 @@ hr {
 }
 
 h2 {
-	@include bp-md {
+	@include query('med') {
 		font-size: rem(28);
 	}
-	@include bp-lg {
+	@include query('lrg') {
 		font-size: rem(32);
 	}
 }
@@ -187,7 +158,7 @@ header {
 		padding: 0 10px;
 		margin-top: 15px;
 		line-height: 1.5rem;
-		@include bp-md {
+		@include query('med') {
 			font-size: rem(30);
 			line-height: 2rem;
 		}
@@ -206,7 +177,7 @@ section#work {
 	div.work-item {
 		@include clearfix;
 		position: relative;
-		padding: 6px 0px;
+		padding: 6px 0;
 		border-top: 1px solid $md-grey-300;
 		width: 100%;
 		display: block;
@@ -237,11 +208,11 @@ section#work {
 			position: absolute;
 			right: 5px;
 			top: 0;
-			@include bp-lg {
+			@include query('lrg') {
 				top: 5px;
 			}
 			.icon-github {
-				@include bp-lg {
+				@include query('lrg') {
 					height: 30px;
 					width: 30px;
 				}

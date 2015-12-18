@@ -1,0 +1,32 @@
+// mixins for export
+
+@mixin query($breakpoint) { 
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+			@content;
+		}
+	}
+	@else {
+		@warn "No value from `#{$breakpoint}`. Is it in the map? ";
+	}
+}
+
+@mixin listreset {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0;
+	-webkit-padding-start: 0;
+	margin-left: 0; // ie
+	padding-left: 0; // ff
+}
+
+@mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0 , $spread : 0 , $color : #000000 ){
+  -webkit-box-shadow: $horiz $vert $blur $spread $color;
+  -moz-box-shadow: $horiz $vert $blur $spread $color;
+  box-shadow: $horiz $vert $blur $spread $color;
+}
+
+@mixin text-shadow($x: 1px, $y: 1px, $r: 1px, $c: rgba(45,45,45,.35)){
+	text-shadow: $x $y $r $c;
+}
