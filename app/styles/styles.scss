@@ -26,7 +26,7 @@ $breakpoints: (
 $link: $md-red-a200;
 $link-fb: lighten($link,10%);
 $copy: #757575;
-$bg: $md-blue-grey-500;
+$bg: $md-grey-900;
 
 body {
 	background-color: #fff;
@@ -270,11 +270,9 @@ footer {
 		color: #fff;
 		font-size: rem(13);
 	}
-	a {
-		color: $link-fb;
-	}
 	.icon-github {
 		display: block;
 		margin: 0 auto;
+    fill: $link;
 	}
 }
