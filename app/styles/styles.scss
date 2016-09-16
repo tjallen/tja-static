@@ -113,6 +113,12 @@ p {
 	color: $copy;
 }
 
+p.note {
+  display: inline;
+  font-style: italic;
+  font-size: 11px;
+}
+
 b, strong {
 	color: $md-grey-800;
 }
@@ -183,7 +189,7 @@ section#work {
 		display: block;
 		& > * {
 			display: inline-block;
-			margin: 10px 5px 0 5px;
+			margin: 10px 0 0 0;
 		}
 		div.work-info {
 			width: 75%;

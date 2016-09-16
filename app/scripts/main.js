@@ -1,6 +1,1 @@
-var foo = 'hello';
-var bar = 'world';
-
-console.log(foo + ' ' + bar);
-
-//# sourceMappingURL=main.js.map
+console.log('if you\'re reading this you have to hire me. legally binding m8');
