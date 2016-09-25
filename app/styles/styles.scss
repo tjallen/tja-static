@@ -32,7 +32,15 @@ body {
 	background-color: #fff;
 	color: $md-grey-600;
 	line-height: 1.8em;
-	font-family: 'Montserrat', 'Open Sans', 'Droid Sans', 'Arial Black',  Verdana,  sans-serif;
+  font-family: -apple-system, 
+                BlinkMacSystemFont, 
+                "Segoe UI", 
+                Roboto, 
+                Oxygen-Sans, 
+                Ubuntu, 
+                Cantarell, 
+                "Helvetica Neue", 
+                sans-serif;
 }
 
 div#main {
@@ -79,6 +87,7 @@ hr {
 }
 
 #{headings(1,6)} {
+  font-weight: normal;
 	color: $md-grey-800;
 }
 
